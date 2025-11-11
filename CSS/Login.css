@@ -1,0 +1,273 @@
+body {
+  margin: 0;
+  padding-top: 70px;
+  background-color: rgb(228, 228, 228);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.EN {
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f7f7f7;
+  padding: 20px 25px;
+  border-radius: 16px;
+  max-width: 300px;
+  min-width: 20px;
+  width: 70%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+#inicioToggle,
+#registroToggle {
+  border-radius: 16px;
+  padding: 10px 25px;
+  font-weight: bold;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  color: #333;
+  flex: 1 1 40%;
+  max-width: 150px;
+}
+
+#inicioToggle:hover,
+#registroToggle:hover {
+  background-color: #49535e;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Estilo para el botón activo */
+#inicioToggle.active,
+#registroToggle.active {
+  background-color: #49535e;
+  color: white;
+  font-weight: bold;
+}
+
+/* Responsive: Tablets y pantallas medianas */
+@media screen and (max-width: 768px) {
+  .EN {
+    padding: 20px 15px;
+    top: 20%;
+    width: 85%;
+  }
+
+  #inicioToggle,
+  #registroToggle {
+    flex: 1 1 45%;
+    max-width: none;
+    font-size: 13px;
+    padding: 10px 15px;
+  }
+
+  .inicioSesion,
+  .registroForm {
+    max-width: 100%;
+    width: 90%;
+    padding: 25px 20px;
+  }
+
+  .inicioSesion input,
+  .registroForm input,
+  .registroForm select {
+    width: 100%;
+    max-width: 250px;
+  }
+}
+
+/* Responsive: Móviles pequeños */
+@media screen and (max-width: 480px) {
+  body {
+    padding-top: 0;
+  }
+
+  .EN {
+    position: relative;
+    top: 0;
+    left: auto;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    margin: 15px 0;
+    padding: 15px 10px;
+    border-radius: 8px;
+    gap: 10px;
+  }
+
+  #inicioToggle,
+  #registroToggle {
+    flex: 1 1 48%;
+    max-width: none;
+    font-size: 12px;
+    padding: 8px 10px;
+    border-radius: 12px;
+  }
+
+  .inicioSesion {
+    position: relative;
+    top: 0;
+    left: auto;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    margin: 10px 0;
+    padding: 20px 15px;
+    border-radius: 8px;
+  }
+
+  .registroForm {
+    position: relative;
+    top: 0;
+    left: auto;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    margin: 10px 0;
+    padding: 20px 15px;
+    border-radius: 8px;
+  }
+
+  .inicioSesion input,
+  .registroForm input,
+  .registroForm select {
+    width: 100%;
+    max-width: 100%;
+    height: 40px;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .inicioSesion button,
+  .registroForm button {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .inicioSesion h2,
+  .registroForm h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+}
+
+.inicioSesion {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f8f8f8;
+  padding: 35px 30px 30px 30px;
+  border-radius: 16px;
+  max-width: 350px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+.inicioSesion.show {
+  display: flex;
+}
+
+.registroForm {
+  position: absolute;
+  top: 56.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f8f8f8;
+  padding: 35px 30px 30px 30px;
+  border-radius: 16px;
+  max-width: 350px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+.registroForm.show {
+  display: flex;
+}
+
+.inicioSesion input,
+.registroForm input {
+  width: 250px;
+  height: 35px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  background: linear-gradient(90deg, #e1dede, #9c9b9b);
+  box-sizing: border-box;
+}
+
+.inicioSesion button,
+.registroForm button {
+  width: 250px;
+  height: 35px;
+  border-radius: 16px;
+  padding: 10px 25px;
+  font-weight: bold;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1px;
+}
+.registroForm button:hover,
+.inicioSesion button:hover {
+  background-color: #49535e;
+  color: white;
+  transform: scale(1.05);
+}
+
+.registroForm select {
+  width: 250px;
+  height: 35px;
+  border-radius: 10px;
+  border: none;
+  padding: 5px 10px;
+  background: linear-gradient(90deg, #e1dede, #9c9b9b);
+  font-size: 14px;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.registroForm select:focus {
+  outline: none;
+  background: linear-gradient(90deg, #d0d0d0, #9c9b9b);
+}
+
+.registroForm select option {
+  text-align: left;
+  color: #000;
+}
