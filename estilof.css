@@ -52,6 +52,11 @@ section {
   position: relative;
   left: 20px;
   font-size: 1.6rem;
+  flex: 1;
+  padding: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .Menu a {
@@ -103,6 +108,7 @@ section {
   background-color: #6e2020;
 }
 
+
 /* Responsive: ajustes para diferentes tamaños de pantalla */
 @media screen and (max-width: 1024px) {
   header {
@@ -132,41 +138,115 @@ section {
   }
 }
 
-@media screen and (max-width: 480px) {
-  body {
-    padding-top: 120px;
+/* Menú hamburguesa para móviles */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
   }
 
   header {
-    padding: 8px 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: #c2c1c1d7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .encabezado {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    margin: 0;
+    width: auto;
   }
 
   .encabezado h1 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     left: 10px;
+    display: block;
+    max-width: calc(100vw - 140px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .Menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    max-height: calc(100vh - 70px);
+    background-color: rgba(194, 193, 193, 0.98);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  .Menu.active {
+    transform: translateX(0);
+  }
+
+  .Menu .barra {
+    padding: 15px 20px;
+    font-size: 14px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0;
+    text-align: left;
+  }
+
+  .Menu .barra:last-child {
+    border-bottom: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    padding-top: 70px;
+  }
+
+  header {
+    padding: 0 10px;
+  }
+
+  .encabezado {
+    width: 100%;
+    gap: 8px;
   }
 
   .encabezado img {
     height: 50px;
+    width: 50px;
+    flex-shrink: 0;
+  }
+
+  .encabezado h1 {
+    font-size: 1rem;
+    left: 0;
+    padding: 0 5px;
+    max-width: calc(100vw - 120px);
   }
 
   .Menu .barra {
-    padding: 5px 10px;
-    font-size: 11px;
-    margin: 2px;
+    padding: 12px 15px;
+    font-size: 13px;
   }
-}
-
-/* Pantallas extra-pequeñas: centrar y reducir aún más */
-@media (max-width: 420px) {
-  .Menu {
-    justify-content: center;
-  }
-  .Menu .barra {
-    padding: 6px 8px;
-    font-size: 11px;
-  }
-  .encabezado h1 { font-size: 1.2rem; left: 10px; }
 }
 
 /* Esto solo es parte del diseño del menu y fondo  */
@@ -296,6 +376,110 @@ section {
 .pestaña-contenido .Titulo-S:hover {
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
+
+/* Responsive: Modal Habilidades para tablets y móviles */
+@media screen and (max-width: 1024px) {
+  .pestaña-contenido {
+    width: 85%;
+    max-width: 600px;
+    padding: 25px;
+  }
+
+  .Titulo-S {
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+
+  .barraH {
+    width: 100%;
+    max-width: 500px;
+    height: 22px;
+    margin: 0 auto;
+  }
+
+  .Habilidad {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+
+  .titulo-habilidad {
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+
+  .porcentaje-Habilidado {
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .Descrip-H {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .pestaña-contenido {
+    width: 95%;
+    max-width: none;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .Titulo-S {
+    font-size: 22px;
+    color: #eb0909;
+    margin-bottom: 12px;
+  }
+
+  .Descrip-H {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .barraH {
+    width: 100%;
+    max-width: 100%;
+    height: 20px;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+
+  .Habilidad {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  .titulo-habilidad {
+    width: 100%;
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+
+  .porcentaje-Habilidado {
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+    font-weight: bold;
+  }
+
+  .cerrar {
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+  }
+}
 #Portafolio {
   position: relative;
   top: 30cm;
@@ -412,13 +596,16 @@ section {
 }
 
 .acerca-de {
-  text-align: center;
   color: #fffdfd;
   margin: auto;
-  max-width: 800px;
+  max-width: 1000px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
   font-size: 18px;
   margin-bottom: 50px;
+  text-align: left;
 }
 
 .usuario:hover {
@@ -429,23 +616,65 @@ section {
 #Acerca h1 {
   color: #f9f7f7;
   font-family: "Arial Black", sans-serif;
-  position: relative;
-  left: 45px;
+  position: static;
+  left: 0;
+  margin: 0 0 10px 0;
 }
 
 .bio {
-  margin-top: 90px;
+  margin-top: 0;
   line-height: 1.6;
-  position: relative;
-  right: 90px;
+  position: static;
+  right: auto;
   text-align: justify;
 }
 
 .usuario {
   height: 250px;
-  border-radius: 70%;
-  margin-bottom: 40px;
+  width: 250px;
+  border-radius: 50%;
+  margin-bottom: 0;
   border: 4px solid #d8d3d0;
+  flex-shrink: 0;
+}
+
+/* Responsive: Acerca layout - evitar que el texto se sobreponga a la imagen */
+@media screen and (max-width: 768px) {
+  .acerca-de {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 15px;
+    gap: 12px;
+  }
+
+  #Acerca h1 {
+    position: static;
+    left: 0;
+    margin: 0;
+  }
+
+  .bio {
+    position: static;
+    margin-top: 10px;
+    right: auto;
+    text-align: center;
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .usuario {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .acerca-de { font-size: 16px; }
+  .usuario { height: 120px; width: 120px; }
+  .bio { font-size: 14px; padding: 0 12px; }
 }
 
 footer {
@@ -585,7 +814,135 @@ footer {
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 2px 2px 6px rgba(0, 0, 0, 0.4);
 }
 
+/* Responsive: Modal Contacto para tablets y móviles */
+@media screen and (max-width: 1024px) {
+  .Titulo-C {
+    position: static;
+    left: 0;
+    transform: none;
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
 
+  .Ubicacion h2 {
+    position: static;
+    left: 0;
+    transform: none;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .Ubicacion p {
+    position: static;
+    left: 0;
+    transform: none;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .Redes-sociales {
+    position: static;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .Redes-sociales a {
+    position: static;
+    right: 0;
+  }
+
+  .Formulario {
+    position: static;
+    left: 0;
+    text-align: center;
+  }
+
+  #nombre,
+  #correo,
+  #mensaje {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .Formulario button {
+    position: static;
+    top: 0;
+    right: auto;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .pestaña-contenido-C {
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Titulo-C {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .Ubicacion h2,
+  .Redes-sociales h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .Ubicacion p {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .Redes-sociales {
+    margin-bottom: 12px;
+  }
+
+  .Redes-sociales a {
+    font-size: 2rem;
+    margin: 0 10px;
+  }
+
+  #nombre,
+  #correo,
+  #mensaje {
+    width: 100%;
+    max-width: none;
+    font-size: 14px;
+  }
+
+  #nombre,
+  #correo {
+    height: 35px;
+  }
+
+  #mensaje {
+    height: 80px;
+  }
+
+  .Formulario button {
+    width: 100%;
+    max-width: none;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .pestaña-contenido-C {
+    padding: 15px;
+    border-radius: 8px;
+  }
+}
 
 /* Animaciones */
 
@@ -624,5 +981,72 @@ footer {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+
+/* ===== Estilos del menú hamburguesa ===== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background-color: #9c9c98;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger:hover {
+  background-color: #b0b0aa;
+}
+
+.hamburger i {
+  font-size: 28px;
+  color: #000;
+}
+
+/* Mostrar hamburguesa solo en móviles */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .Menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    max-height: calc(100vh - 70px);
+    background-color: rgba(194, 193, 193, 0.98);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  .Menu.active {
+    transform: translateX(0);
+  }
+
+  .Menu .barra {
+    padding: 15px 20px;
+    font-size: 14px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0;
+    text-align: left;
+  }
+
+  .Menu .barra:last-child {
+    border-bottom: none;
   }
 }
